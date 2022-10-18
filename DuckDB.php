@@ -49,15 +49,17 @@ class DuckDB
         $data = [];
         $columns = [];
 
-        for ($col = 0; $col < $result->column_count; $col++) {
-            $columns[] = FFI::string($result->columns[$col]->name);
+        for ($col = 0; $col < $this->ffi->duckdb_column_count(FFI::addr($result)); $col++) {
+            $columns[] = $this->ffi->duckdb_column_name(FFI::addr($result), $col);
 
-            for ($row = 0; $row < $result->row_count; $row++) {
+            for ($row = 0; $row < $this->ffi->duckdb_row_count(FFI::addr($result)); $row++) {
                 $value = $this->ffi->duckdb_value_varchar(FFI::addr($result), $col, $row);
-
-                $data[$row][$columns[$col]] = FFI::string($value);
-
-                FFI::free($value);
+                if ($value === null) {
+                    $data[$row][$columns[$col]] = $value;
+                } else {
+                    $data[$row][$columns[$col]] = FFI::string($value);
+                    FFI::free($value);
+                }
             }
         }
 

@@ -6,7 +6,8 @@ error_reporting(E_ALL);
 
 require 'DuckDB.php';
 
-$db = new DuckDB('/tmp/duck1.db', __DIR__ . '/libduckdb.so', __DIR__ . '/duckdb.h');
+//$db = new DuckDB('/tmp/duck1.db', __DIR__ . '/libduckdb.so', __DIR__ . '/duckdb.h');
+$db = new DuckDB('/tmp/duck1.db', '/opt/homebrew/Cellar/duckdb/0.5.1/lib/libduckdb.dylib', __DIR__.'/duckdb0.5.1.h');
 
 $db->query('CREATE TABLE IF NOT EXISTS test_table (i INTEGER, j INTEGER, k VARCHAR)');
 
