@@ -2,6 +2,8 @@
 
 namespace Maple\DuckDB;
 
+use Maple\DuckDB\Error\Exception;
+
 class DuckDB
 {
     private \FFI $ffi;
