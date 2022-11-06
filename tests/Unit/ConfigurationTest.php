@@ -10,7 +10,7 @@ class ConfigurationTest extends TestCase
     {
         error_reporting(E_ALL);
 
-        $db = new DuckDB(':memory:', $_ENV['TEST_DUCKDB_LIBRARY'], __DIR__.'/../../duckdb0.5.1.h');
+        $db = new DuckDB(':memory:', $_ENV['TEST_DUCKDB_LIBRARY']);
         print_r($db->getConfigOptions());
     }
 }

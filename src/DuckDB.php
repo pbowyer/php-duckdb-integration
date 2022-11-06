@@ -8,8 +8,11 @@ class DuckDB
     private \FFI\CData $db;
     private \FFI\CData $conn;
 
-    public function __construct(string $databasePath, string $libraryPath, string $headersPath)
+    public function __construct(string $databasePath, string $libraryPath, string $headersPath = null)
     {
+        if (!$headersPath) {
+            $headersPath = __DIR__.'/../data/duckdb0.5.1.h';
+        }
         $this->ffi = \FFI::cdef(file_get_contents($headersPath), $libraryPath);
 
         $this->db = $this->ffi->new('duckdb_database');

@@ -10,7 +10,7 @@ class BasicQueryTest extends TestCase
     {
         error_reporting(E_ALL);
 
-        $db = new DuckDB(':memory:', $_ENV['TEST_DUCKDB_LIBRARY'], __DIR__.'/../../duckdb0.5.1.h');
+        $db = new DuckDB(':memory:', $_ENV['TEST_DUCKDB_LIBRARY']);
 
         $db->query('CREATE TABLE IF NOT EXISTS test_table (i INTEGER, j INTEGER, k VARCHAR)');
 
