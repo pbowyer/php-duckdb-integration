@@ -1,0 +1,24 @@
+{
+    "name": "maple/duckdb",
+    "description": "DuckDB driver for PHP, using FFI",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Maple\\DuckDB\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Peter Bowyer",
+            "email": "peter@mapledesign.co.uk"
+        },
+        {
+            "name": "Thomas Bley"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.1",
+        "phpunit/phpunit": "^9.5"
+    }
+}
